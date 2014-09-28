@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C02822E19D75B6B00049CE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C02822C19D75B6B00049CE5 /* Main.storyboard */; };
+		4C02823119D7625B00049CE5 /* SuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02823019D7625B00049CE5 /* SuggestionsView.swift */; };
+		4C84751A19D7A314006D9D01 /* EmojiSuggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C84751919D7A314006D9D01 /* EmojiSuggester.swift */; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B67A1196E03B700114361 /* KeyboardModel.swift */; };
 		4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60A1391979FA5C00854CC8 /* KeyboardKeyBackground.swift */; };
@@ -17,7 +19,7 @@
 		4E60A1451979FEFC00854CC8 /* KeyboardViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60A1441979FEFC00854CC8 /* KeyboardViewProtocol.swift */; };
 		4E6AEE4C19D246D700931E8F /* Catboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AEE4B19D246D700931E8F /* Catboard.swift */; };
 		4E6AEE4E19D2470E00931E8F /* TastyKeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AEE4D19D2470E00931E8F /* TastyKeyboardProtocol.swift */; };
-		4E807DC119461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E807DB919461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex */; };
+		4E807DC119461DC700D875D1 /* Automoji.Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E807DB919461DC700D875D1 /* Automoji.Keyboard.appex */; };
 		4EAAB700196E13FE005DE8F5 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DBD19461DC700D875D1 /* KeyboardViewController.swift */; };
 		4EF16F9119D254E00076AFCB /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9019D254E00076AFCB /* Background.jpg */; };
 		4EF16F9619D255030076AFCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9319D255030076AFCB /* Images.xcassets */; };
@@ -60,7 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4E807DC119461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex in Embed App Extensions */,
+				4E807DC119461DC700D875D1 /* Automoji.Keyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		4C02822D19D75B6B00049CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HostingApp/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		4C02823019D7625B00049CE5 /* SuggestionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsView.swift; sourceTree = "<group>"; };
+		4C84751919D7A314006D9D01 /* EmojiSuggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiSuggester.swift; sourceTree = "<group>"; };
 		4E5B67A1196E03B700114361 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		4E60A1391979FA5C00854CC8 /* KeyboardKeyBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKeyBackground.swift; sourceTree = "<group>"; };
 		4E60A13B1979FA8E00854CC8 /* KeyboardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardConnector.swift; sourceTree = "<group>"; };
@@ -77,8 +81,8 @@
 		4E60A1441979FEFC00854CC8 /* KeyboardViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewProtocol.swift; sourceTree = "<group>"; };
 		4E6AEE4B19D246D700931E8F /* Catboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catboard.swift; sourceTree = "<group>"; };
 		4E6AEE4D19D2470E00931E8F /* TastyKeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TastyKeyboardProtocol.swift; sourceTree = "<group>"; };
-		4E807D9319461D9000D875D1 /* HostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E807DB919461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Archagon.HostingApp.Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E807D9319461D9000D875D1 /* Automoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Automoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E807DB919461DC700D875D1 /* Automoji.Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Automoji.Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E807DBC19461DC700D875D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E807DBD19461DC700D875D1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		4E807DC81946209600D875D1 /* KeyboardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
@@ -109,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C02822F19D7624200049CE5 /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				4C02823019D7625B00049CE5 /* SuggestionsView.swift */,
+				4C84751919D7A314006D9D01 /* EmojiSuggester.swift */,
+			);
+			name = Suggestions;
+			sourceTree = "<group>";
+		};
 		4E6AEE4F19D2484B00931E8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +180,8 @@
 		4E807D9419461D9000D875D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E807D9319461D9000D875D1 /* HostingApp.app */,
-				4E807DB919461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex */,
+				4E807D9319461D9000D875D1 /* Automoji.app */,
+				4E807DB919461DC700D875D1 /* Automoji.Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 		4E807DBA19461DC700D875D1 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				4C02822F19D7624200049CE5 /* Suggestions */,
 				4E6AEE5119D2487A00931E8F /* Protocols */,
 				4E6AEE5219D2488B00931E8F /* Controller */,
 				4E6AEE5019D2486900931E8F /* Model */,
@@ -220,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E807D9219461D9000D875D1 /* HostingApp */ = {
+		4E807D9219461D9000D875D1 /* Automoji */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "HostingApp" */;
+			buildConfigurationList = 4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "Automoji" */;
 			buildPhases = (
 				4E807D8F19461D9000D875D1 /* Sources */,
 				4E807D9019461D9000D875D1 /* Frameworks */,
@@ -236,9 +250,9 @@
 				4E807DC019461DC700D875D1 /* PBXTargetDependency */,
 				4E807DC319461DC700D875D1 /* PBXTargetDependency */,
 			);
-			name = HostingApp;
+			name = Automoji;
 			productName = TransliteratingKeyboard;
-			productReference = 4E807D9319461D9000D875D1 /* HostingApp.app */;
+			productReference = 4E807D9319461D9000D875D1 /* Automoji.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4E807DB819461DC700D875D1 /* Keyboard */ = {
@@ -255,7 +269,7 @@
 			);
 			name = Keyboard;
 			productName = Keyboard;
-			productReference = 4E807DB919461DC700D875D1 /* Archagon.HostingApp.Keyboard.appex */;
+			productReference = 4E807DB919461DC700D875D1 /* Automoji.Keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -269,9 +283,11 @@
 				TargetAttributes = {
 					4E807D9219461D9000D875D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 3CMFHSWSZ2;
 					};
 					4E807DB819461DC700D875D1 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 3CMFHSWSZ2;
 					};
 				};
 			};
@@ -288,7 +304,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E807D9219461D9000D875D1 /* HostingApp */,
+				4E807D9219461D9000D875D1 /* Automoji */,
 				4E807DB819461DC700D875D1 /* Keyboard */,
 			);
 		};
@@ -329,11 +345,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF250C71986D460003BC484 /* KeyboardLayout.swift in Sources */,
+				4C84751A19D7A314006D9D01 /* EmojiSuggester.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
 				4E6AEE4C19D246D700931E8F /* Catboard.swift in Sources */,
 				4E60A1431979FD9C00854CC8 /* ForwardingView.swift in Sources */,
 				4E60A1451979FEFC00854CC8 /* KeyboardViewProtocol.swift in Sources */,
+				4C02823119D7625B00049CE5 /* SuggestionsView.swift in Sources */,
 				4E60A13C1979FA8E00854CC8 /* KeyboardConnector.swift in Sources */,
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
 				4EAAB700196E13FE005DE8F5 /* KeyboardViewController.swift in Sources */,
@@ -452,7 +470,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HostingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -464,7 +484,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HostingApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -474,14 +496,18 @@
 		4E807DC519461DC700D875D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "Archagon.HostingApp.$(TARGET_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "Automoji.$(TARGET_NAME:rfc1034identifier)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -489,10 +515,14 @@
 		4E807DC619461DC700D875D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "Archagon.HostingApp.$(TARGET_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "Automoji.$(TARGET_NAME:rfc1034identifier)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -509,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "HostingApp" */ = {
+		4E807DAF19461D9000D875D1 /* Build configuration list for PBXNativeTarget "Automoji" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E807DB019461D9000D875D1 /* Debug */,

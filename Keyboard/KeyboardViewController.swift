@@ -17,6 +17,8 @@ class KeyboardViewController: UIInputViewController {
     var forwardingView: ForwardingView
     var layout: KeyboardLayout
     var heightConstraint: NSLayoutConstraint?
+
+    var suggestionsView: SuggestionsView
     
     var currentMode: Int {
         didSet {
@@ -43,11 +45,65 @@ class KeyboardViewController: UIInputViewController {
         self.forwardingView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.layout = KeyboardLayout(model: self.keyboard, superview: self.forwardingView)
         self.currentMode = 0
-        
+
+        self.suggestionsView = SuggestionsView(frame: CGRectZero)
+        self.suggestionsView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.suggestionsView.searchString = ""
+
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
+
+        self.suggestionsView.textProxy = (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput)
+
         self.view.addSubview(self.forwardingView)
-        
+        self.view.addSubview(self.suggestionsView)
+
+        self.view.addConstraint(
+            NSLayoutConstraint(
+            item: self.suggestionsView,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: self.view,
+            attribute: NSLayoutAttribute.Height,
+            multiplier: 1/5,
+            constant: 0))
+        self.view.addConstraint(
+            NSLayoutConstraint(
+                item: self.suggestionsView,
+                attribute: NSLayoutAttribute.Left,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: self.view,
+                attribute: NSLayoutAttribute.Left,
+                multiplier: 1,
+                constant: 0))
+        self.view.addConstraint(
+            NSLayoutConstraint(
+                item: self.suggestionsView,
+                attribute: NSLayoutAttribute.Right,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: self.view,
+                attribute: NSLayoutAttribute.Right,
+                multiplier: 1,
+                constant: 0))
+        self.view.addConstraint(
+            NSLayoutConstraint(
+                item: self.suggestionsView,
+                attribute: NSLayoutAttribute.Top,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: self.view,
+                attribute: NSLayoutAttribute.Top,
+                multiplier: 1,
+                constant: 0))
+
+        self.view.addConstraint(
+            NSLayoutConstraint(
+                item: self.suggestionsView,
+                attribute: NSLayoutAttribute.Bottom,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: self.forwardingView,
+                attribute: NSLayoutAttribute.Top,
+                multiplier: 1,
+                constant: 0))
+
         self.view.addConstraint(
             NSLayoutConstraint(
                 item: self.forwardingView,
@@ -69,22 +125,13 @@ class KeyboardViewController: UIInputViewController {
         self.view.addConstraint(
             NSLayoutConstraint(
                 item: self.forwardingView,
-                attribute: NSLayoutAttribute.Top,
-                relatedBy: NSLayoutRelation.Equal,
-                toItem: self.view,
-                attribute: NSLayoutAttribute.Top,
-                multiplier: 1,
-                constant: 0))
-        self.view.addConstraint(
-            NSLayoutConstraint(
-                item: self.forwardingView,
                 attribute: NSLayoutAttribute.Bottom,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: self.view,
                 attribute: NSLayoutAttribute.Bottom,
                 multiplier: 1,
                 constant: 0))
-        
+
         // TODO: figure out where to move this
         self.layout.initialize()
         self.setupKeys()
@@ -95,6 +142,20 @@ class KeyboardViewController: UIInputViewController {
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        var heightConstraint = NSLayoutConstraint(
+                item: self.view,
+                attribute: NSLayoutAttribute.Height,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.NotAnAttribute,
+                multiplier: 0.0,
+                constant: 400)
+        heightConstraint.priority = 999
+        self.view.addConstraint(heightConstraint)
     }
 
     override func updateViewConstraints() {
@@ -135,51 +196,23 @@ class KeyboardViewController: UIInputViewController {
                     
                     if key.outputText != nil {
                         keyView.addTarget(self, action: "keyPressed:", forControlEvents: .TouchUpInside)
-    //                    keyView.addTarget(self, action: "takeScreenshotDelay", forControlEvents: .TouchDown)
                     }
                     
                     if key.type == Key.KeyType.Character || key.type == Key.KeyType.Period {
                         keyView.addTarget(keyView, action: Selector("showPopup"), forControlEvents: showOptions)
                         keyView.addTarget(keyView, action: Selector("hidePopup"), forControlEvents: hideOptions)
                     }
-                    
-                    //        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), forState: .Normal)
-                    //        self.nextKeyboardButton.sizeToFit()
                 }
             }
         }
     }
-    
-    func takeScreenshotDelay() {
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("takeScreenshot"), userInfo: nil, repeats: false)
-    }
-    
-    func takeScreenshot() {
-        if !CGRectIsEmpty(self.view.bounds) {
-            UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
-            
-            let oldViewColor = self.view.backgroundColor
-            self.view.backgroundColor = UIColor(hue: (216/360.0), saturation: 0.05, brightness: 0.86, alpha: 1)
-            
-            var rect = self.view.bounds
-            UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
-            var context = UIGraphicsGetCurrentContext()
-            self.view.drawViewHierarchyInRect(self.view.bounds, afterScreenUpdates: true)
-            var capturedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            let name = (self.interfaceOrientation.isPortrait ? "Screenshot-Portrait" : "Screenshot-Landscape")
-            var imagePath = "/Users/archagon/Documents/Programming/OSX/TransliteratingKeyboard/\(name).png"
-            UIImagePNGRepresentation(capturedImage).writeToFile(imagePath, atomically: true)
-            
-            self.view.backgroundColor = oldViewColor
-        }
-    }
-    
+
     func keyPressed(sender: KeyboardKey) {
         UIDevice.currentDevice().playInputClick()
 
         if let text = self.layout.keyForView(sender)?.outputText {
-            (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).insertText(text)
+//            (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).insertText(text)
+            suggestionsView.searchString += text
         }
     }
 
@@ -196,8 +229,13 @@ class KeyboardViewController: UIInputViewController {
         
         // first delete
         UIDevice.currentDevice().playInputClick()
-        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).deleteBackward()
-        
+        if countElements(suggestionsView.searchString) > 0 {
+            suggestionsView.searchString = suggestionsView.searchString.substringToIndex(advance(suggestionsView.searchString.endIndex, -1))
+        }
+        else {
+            suggestionsView.textProxy.deleteBackward()
+        }
+
         // trigger for subsequent deletes
         self.backspaceDelayTimer = NSTimer.scheduledTimerWithTimeInterval(backspaceDelay - backspaceRepeat, target: self, selector: Selector("backspaceDelayCallback"), userInfo: nil, repeats: false)
     }
@@ -212,7 +250,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func backspaceRepeatCallback() {
-        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).deleteBackward()
+        if countElements(suggestionsView.searchString) > 0 {
+            suggestionsView.searchString = suggestionsView.searchString.substringToIndex(advance(suggestionsView.searchString.endIndex, -1))
+        }
+        else {
+            suggestionsView.textProxy.deleteBackward()
+        }
     }
     
     func updateKeyCaps(lowercase: Bool) {

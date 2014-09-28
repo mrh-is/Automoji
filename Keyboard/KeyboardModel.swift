@@ -63,6 +63,7 @@ class Key: Hashable {
         case Period
         case Space
         case Return
+        case Clear
     }
     
     var type: KeyType
@@ -116,8 +117,7 @@ func defaultKeyboard() -> Keyboard {
         defaultKeyboard.addKey(keyModel, row: 1, page: 0)
     }
     
-    var keyModel1 = Key(.Backspace)
-    keyModel1.keyCap = "⬅︎"
+    var keyModel1 = Key(.Clear)
     defaultKeyboard.addKey(keyModel1, row: 2, page: 0)
 
     for key in ["Z", "X", "C", "V", "B", "N", "M"] {

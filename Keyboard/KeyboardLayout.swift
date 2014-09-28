@@ -16,7 +16,7 @@ let globalLayout: [String:Double] = [
     "leftGap": 3,
     "rightGap": 3,
     "topBanner": 0,
-    "topGap": 12,
+    "topGap": 3,
     "bottomGap": 3,
     "keyWidthRatio": (26 / 320.0),
     "keyHeightRatio": (39 / 216.0),
@@ -220,6 +220,14 @@ class KeyboardLayout {
             key.textColor = colors["lightTextColor"]!
             key.downColor = colors["lightColor"]!
             key.downUnderColor = colors["lightShadowColor"]!
+        case
+        Key.KeyType.Clear:
+            key.color = UIColor.clearColor()
+            key.underColor = UIColor.clearColor()
+            key.borderColor = UIColor.clearColor()
+            key.textColor = UIColor.clearColor()
+            key.downColor = UIColor.clearColor()
+            key.downUnderColor = UIColor.clearColor()
         }
     }
     
@@ -678,7 +686,7 @@ class KeyboardLayout {
                                 constant: 0)
                             self.superview.addConstraint(constraint0)
                             self.allConstraintObjects.append(constraint0)
-                        case Key.KeyType.Shift, Key.KeyType.Backspace:
+                        case Key.KeyType.Shift, Key.KeyType.Backspace, Key.KeyType.Clear:
                             let shiftAndBackspaceMaxWidth = layout["shiftAndBackspaceMaxWidth"]!
                             var constraint = NSLayoutConstraint(
                                 item: key!,
